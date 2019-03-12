@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,25 +9,27 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 export class AppComponent implements ngOnInit
 {
 
-  closeResult: string;
+  constructor(public dialog: MatDialog) {}
 
-    constructor(private modalService: NgbModal) {}
+    openDialog() {
+      const dialogRef = this.dialog.open(LoginModalComponent);
 
-    open(content) {
-      this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-        this.closeResult = `Closed with: ${result}`;
-      }, (reason) => {
-        this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
       });
     }
+}
 
-    private getDismissReason(reason: any): string {
-      if (reason === ModalDismissReasons.ESC) {
-        return 'by pressing ESC';
-      } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-        return 'by clicking on a backdrop';
-      } else {
-        return  `with: ${reason}`;
-      }
-    }
+@Component({
+  selector: 'app-login-modal',
+  templateUrl: './login-modal.component.html',
+  styleUrls: ['./login-modal.component.css']
+})
+export class LoginModalComponent implements OnInit {
+
+  constructor() { }
+
+  ngOnInit() {
+  }
+
 }
