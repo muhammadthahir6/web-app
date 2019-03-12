@@ -32,7 +32,7 @@
             <div class="container" style="width: 50%;">
                 <div class="row">
                     <div class="col-md-6 ">
-                        <button type="button" class="log" data-toggle="modal" data-target="#myModal">Login</button>
+                        <button type="button" class="log" (click)="open(content)">Login</button>
                     </div>
                     <div class="col-md-6 ">
                         <button type="button" class="reg">Register</button>
@@ -116,11 +116,11 @@
  </div>
  </section>
 
- <!-- Modal -->
+ <!-- Modal
  <div class="modal fade " id="myModal " role="dialog ">
    <div class="modal-dialog ">
 
-     <!-- Modal content-->
+
      <div class="modal-content " >
        <div class="modal-header ">
          <button type="button " class="close " data-dismiss="modal ">&times;</button>
@@ -150,20 +150,23 @@
 
    </div>
  </div>
- <script>
- 	$(document).ready(function(){
-   $(window).scroll(function(){
-   	var scroll = $(window).scrollTop();
- 	  if (scroll > 100) {
- 	    $(".dark").css("background" , "#fff");
- 	    $("a").css("color","#10b1c5");
- 	  }
+ -->
+ <ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>jfjhgjhgjg</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+  </div>
+</ng-template>
 
- 	  else{
- 		  $(".dark").css("background" , "#ffffff00");
- 		  $("a").css("color","white");
- 	  }
-   })
- });
+ <script>
+
 
  </script>

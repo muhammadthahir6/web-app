@@ -238,7 +238,7 @@ input[type=submit]:hover{
   height: 200px;
   margin:0px auto;
 
-  background-image: url(img/Logo_black.png);
+  background-image: url(/assets/images/Logo_black.png);
 }
 {
 	font-size: 150px;
